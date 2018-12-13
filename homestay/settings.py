@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '192.168.1.100',
-    'gt.swiftwhale.cn',
+    'homestay.swiftwhale.cn',
 ]
 
 
