@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'homestay',
         'USER': 'root',
-        'PASSWORD': 'mwr951001',
+        'PASSWORD': 'Mwr951001!',
         'HOST': '127.0.0.1',
         'OPTIONS': {
             'sql_mode': 'traditional'
