@@ -1,4 +1,4 @@
-# url_header: http://192.168.1.100:8000/api/v1/
+### url_header: http://homestay.swiftwhale.cn/api/v1/
 
 #### 发送短信
 url: user/sms/  
