@@ -26,7 +26,8 @@ SECRET_KEY = '*4k=3e!tw(mo9zy1is@i=oz*+98c_fnrr=#ed-u*y!=l))quhy'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.1.100'
+    '192.168.1.100',
+    'gt.swiftwhale.cn',
 ]
 
 
