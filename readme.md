@@ -1,7 +1,7 @@
 # url_header: http://192.168.1.100:8000/api/v1/
 
 # 发送短信
-url: user/sms/
+url: user/sms/  
 method: post
 param: {"phone":"17600000000"}
 return: {"code":0, "detail":"验证码发送成功"}
