@@ -1,16 +1,16 @@
 ### url_header: http://homestay.swiftwhale.cn/api/v1/
 
-#### 发送短信
-url: user/sms/  
+#### 注册
+url: user/sign_up/  
 method: post  
-param: {"phone":"17600000000"}  
-return: {"code":0, "detail":"验证码发送成功"}  
+param: {"phone":"17600000000","password":"xxxxxxxxx"}  
+return: {"code":0, "user":{"id":1,"phone":"17600000000"}, "token":"xxxxxxxxxxx"}  
 
 #### 登录
-url: user/login/  
+url: user/sign_in/  
 method: post  
-param: {"phone":"17600000000","code":"000000"}  
-return: {"code":0, "user":{"id":1,"phone":"17600000000"}, "token":"xxxxxxxxxxx"}  
+param: {"phone":"17600000000", "password":"xxxxx"}  
+return: {"code":0, "user":{"id":1, "phone":"17600000000"}, "token":"xxxxxxxxx"}  
 
 #### 获取当前用户信息
 url: user/current_user/  
