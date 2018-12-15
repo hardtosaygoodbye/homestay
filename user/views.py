@@ -45,7 +45,7 @@ class SignUpView(APIView):
         users = User.objects.filter(phone = phone)
         if len(users) == 1:
             return Response({'detail': '该手机号已经有人注册'}, 400)
-        user = User(phone, password)
+        user = User(phone = phone, password = password)
         user.save()
         authority = Authority(user = user)
         authority.save()
