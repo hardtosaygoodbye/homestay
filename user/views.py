@@ -63,12 +63,12 @@ class CurrentUserView(APIView):
         userSerializer = UserSerializer(user)
         return Response({'code':0, 'user':userSerializer.data})
     def put(self, request):
-        token = request.GET.get('token')
-        user = toekn2user(token)
+        token = request.data.get('token')
+        user = token2user(token)
         userSerializer = UserSerializer(user, data = request.data,\
         partial = True)
         if not userSerializer.is_valid():
             return Response(userSerializer.errors, 404)
         userSerializer.save()
-        return Response({'code':0, 'user':userSer.data})
+        return Response({'code':0, 'user':userSerializer.data})
 
