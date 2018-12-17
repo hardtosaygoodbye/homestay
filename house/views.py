@@ -24,7 +24,7 @@ class HouseDetailView(APIView):
     def get(self, request):
         house_id = request.GET.get('house_id')
         try:
-            house = House.objects.get(house_id = house_id)
+            house = House.objects.get(pk = house_id)
         except:
             return Response({'detail':'未找到相关房屋信息'})
         serializer = HouseDetailSerializer(house)
