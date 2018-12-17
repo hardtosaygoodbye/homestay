@@ -59,7 +59,7 @@ class CurrentUserView(APIView):
         token = request.GET.get('token')
         if not token:
             return Response({'detail':'token required'}, 404)
-        user = token2user(toekn)
+        user = token2user(token)
         userSerializer = UserSerializer(user)
         return Response({'code':0, 'user':userSerializer.data})
     def patch(self, request):

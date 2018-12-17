@@ -48,3 +48,20 @@ method: get
 param: {"house_id":1}  
 return: {"code":0, "house":{}}  
 
+#### 预定房间
+url: order/order/  
+method: post  
+param: {
+            "house_id":1,
+            "name":"入住者姓名",
+            "id_card":"310110199701010000",
+            "person_num": 2,
+            "check_in_date": "2018-9-10",
+            "check_out_date": "2018-9-11",
+            "phone": "17600000000"，
+            "token":"xxxxxxx"
+        }
+return: {
+    "code":0,
+    "detail":"预定成功"
+}

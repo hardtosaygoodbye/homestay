@@ -1,4 +1,5 @@
 from django.db.models import *
+from user.models import *
 
 class Order(Model):
     statuses = (
@@ -15,4 +16,5 @@ class Order(Model):
     person_num = CharField(max_length = 5)
     check_in_date = DateField(null = True, blank = True)
     check_out_date = DateField(null = True, blank = True)
+    user = ForeignKey(User,on_delete = CASCADE)
     
