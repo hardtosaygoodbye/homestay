@@ -46,7 +46,31 @@ return: {
 url: house/house_detail/  
 method: get  
 param: {"house_id":1}  
-return: {"code":0, "house":{}}  
+return: {
+    "code": 0,
+    "house": {
+        "id": 3,
+        "comments": [
+            {
+                "id": 1,
+                "msg": "很舒适",
+                "score": "5.0",
+                "user": 2,
+                "house": 3
+            }
+        ],
+        "desc": "测试房屋",
+        "cover": "http://www.baidu.com",
+        "city": "上海",
+        "address": "文汇路",
+        "price": "1000.00",
+        "area": "100",
+        "facility": "1",
+        "phone": "17600000000",
+        "comment_num": 1,
+        "comment_score": "5.0"
+    }
+}  
 
 #### 预定房间
 url: order/order/  
