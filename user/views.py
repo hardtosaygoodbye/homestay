@@ -62,7 +62,7 @@ class CurrentUserView(APIView):
         user = token2user(token)
         userSerializer = UserSerializer(user)
         return Response({'code':0, 'user':userSerializer.data})
-    def patch(self, request):
+    def put(self, request):
         token = request.GET.get('token')
         user = toekn2user(token)
         userSerializer = UserSerializer(user, data = request.data,\

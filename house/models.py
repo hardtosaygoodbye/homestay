@@ -19,4 +19,5 @@ class HouseOccupy(Model):
     house = ForeignKey(House, on_delete = CASCADE, related_query_name = \
     'occupy')
     date = DateField(null = True, blank = True)
+    user = ForeignKey(User, on_delete = CASCADE)
 

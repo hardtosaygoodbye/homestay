@@ -5,8 +5,18 @@ from .models import *
 import datetime
 from house.models import *
 from user.views import token2user
+from house.models import *
+import decimal
 
 class OrderView(APIView):
+    def get(self, request):
+        token = request.GET.get('token')
+        status = request.GET.get('status')
+        user = token2user(token)
+        orders = Order.objects.filter(status = status, user = user)
+        orderSerializers = OrderSerializer(orders, many = True)
+        return Response({"code":0 ,"orders": orderSerializers.data})
+
     def post(self, request):
         token = request.data.get('token')
         house_id = request.data.get('house_id')
@@ -28,7 +38,13 @@ class OrderView(APIView):
         user = token2user(token)
         stay_days = (check_out_date-check_in_date).days
         for i in range(stay_days):
-            day = check_in_date + datetime.timedelta(days = i)
+            date = check_in_date + datetime.timedelta(days = i)
+            houseOccupy = HouseOccupy(
+                house = house,
+                date = date,
+                user = user
+            )
+            houseOccupy.save()
         order = Order(
             status = 0,
             price = stay_days * house.price,
@@ -38,9 +54,61 @@ class OrderView(APIView):
             person_num = person_num,
             check_in_date = check_in_date,
             check_out_date = check_out_date,
-            user = user
+            user = user,
+            house = house
         )
         order.save()
         return Response({"code":0, "detail":"预定成功"})
 
+class DiscussOrderView(APIView):
+    def post(self, request):
+        token = request.data.get('token')
+        order_id = request.data.get('order_id')
+        msg = request.data.get('msg')
+        score = request.data.get('score')
+        score = decimal.Decimal(score)
+        user = token2user(token)
+        try:
+            order = Order.objects.get(pk = order_id)
+        except:
+            return Response({"detail":"该订单未找到"}, 400)
+        order.status = 3
+        order.save()
+        house = order.house
+        comment = Comment(
+            msg = msg,
+            score = score,
+            user = user,
+            house = house
+        )
+        comment.save()
+        total_score = (comment_num * comment_score + score) / (comment_num + 1)
+        house.comment_num += 1
+        house.comment_score = total_score
+        house.save()
+        return Response({"code":0, "detail":"评价成功"})
+
+class CancelOrderView(APIView):
+    def post(self, request):
+        token = request.data.get('token')
+        order_id = request.data.get('order_id')
+        try:
+            order = Order.objects.get(pk = order_id)
+        except:
+            return Response({"detail": "该订单未找到"})
+        order.status = 2
+        order.save()
+        return Response({"code":0, "detail":"订单取消成功"})
+
+class PayOrderView(APIView):
+    def post(self, request):
+        token = request.data.get('token')
+        order_id = request.data.get('order_id')
+        try:
+            order = Order.objects.get(pk = order_id)
+        except:
+            return Response({"detail": "该订单未找到"})
+        order.status = 1
+        order.save()
+        return Response({"code":0, "detail":"订单付款完成"})
         

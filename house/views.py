@@ -29,3 +29,4 @@ class HouseDetailView(APIView):
             return Response({'detail':'未找到相关房屋信息'})
         serializer = HouseDetailSerializer(house)
         return Response({'code':0, 'house':serializer.data})
+

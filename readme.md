@@ -20,7 +20,7 @@ return {"code":0, "user":{"id":1, "phone":"17600000000"}}
 
 #### 修改个人数据
 url: user/current_user/  
-method: patch  
+method: put
 param: {"token": "xxxxxxxx","xxxx":"xxxxx"}  
 return: {"code":0, "user": {"id":1,"phone":"17600000000"}}  
 
