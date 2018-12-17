@@ -1,6 +1,6 @@
 from rest_framework.serializers import *
 from .models import *
-from Order.models import *
+from order.models import *
 
 class HouseSerializer(ModelSerializer):
     class Meta:
