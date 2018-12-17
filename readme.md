@@ -27,8 +27,20 @@ return: {"code":0, "user": {"id":1,"phone":"17600000000"}}
 #### 搜索房源
 url: house/house_list/  
 method: get  
-param: {"keyword":"xxxxx"}  
-return: {"code":0, "houses": [{...}]}  
+param: {"keyword":"xxxxx","check_in_date":"2018-9-10","check_out_date":"2018-9-11"}  
+return: {
+    "code": 0,
+    "houses": [
+        {
+            "id": 3,
+            "cover": "http://www.baidu.com",
+            "desc": "测试房屋",
+            "address": "文汇路",
+            "comment_score": "5.0",
+            "price": "1000.00"
+        }
+    ]
+}  
 
 #### 房屋详情
 url: house/house_detail/  

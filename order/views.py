@@ -14,6 +14,9 @@ class OrderView(APIView):
         person_num = request.data.get('person_num')
         check_in_date = request.data.get('check_in_date')
         check_out_date = request.date.get('check_out_date')
+        if not (house_id and name and id_card and person_num and check_in_date\
+        and check_out_date):
+            return Response({'detail':'Parameters are missing'}, 400)
         check_in_date = datetime.strptime(check_in_date, '%Y-%m-%d')
         check_out_date = datetime.strptime(check_out_date, '%Y-%m-%d')
         try:

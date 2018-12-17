@@ -12,11 +12,11 @@ class House(Model):
     phone = CharField('联系电话', max_length = 11)
     comment_num = IntegerField('评价人数', default = 0)
     comment_score = DecimalField('评分', max_digits = 5, decimal_places = 1)
-    statuses = (
-        (0, '空闲'),
-    )
-    status = IntegerField('订单状态', choices = statuses, default = 0)
     def __str__(self):
-        return self.title
+        return self.desc
 
+class HouseOccupy(Model):
+    house = ForeignKey(House, on_delete = CASCADE, related_query_name = \
+    'occupy')
+    date = DateField(null = True, blank = True)
 

@@ -3,16 +3,22 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import *
 from .serializers import *
+from datetime import datetime
 
 class HouseListView(APIView):
     def get(self, request):
         keyword = request.GET.get('keyword')
+        check_in_date = request.GET.get('check_in_date')
+        check_out_date = request.GET.get('check_out_date')
+        check_in_date = datetime.strptime(check_in_date, '%Y-%m-%d')
+        check_out_date = datetime.strptime(check_out_date, '%Y-%m-%d')
         houses = House.objects.filter(
-            Q(desc__icontains = keyword)|Q(city__icontains = keyword),
-            status = 0
+            Q(desc__icontains = keyword)|Q(city__icontains = keyword)
+        ).exclude(
+            occupy__date__range = (check_in_date,check_out_date)
         )
-        serializers = HouseSerializer(books, many = True)
-        return Response({'code':0, 'houses':serializers.data})
+        houseSerializers = HouseSerializer(houses, many = True)
+        return Response({'code':0, 'houses':houseSerializers.data})
 
 class HouseDetailView(APIView):
     def get(self, request):
