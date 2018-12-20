@@ -2,6 +2,9 @@ from rest_framework.serializers import *
 from .models import *
 
 class OrderSerializer(ModelSerializer):
+    house_desc = SerializerMethodField()
+    def get_house_name(self, obj):
+        return obj.house.desc
     class Meta:
         model = Order
         fields = '__all__'
