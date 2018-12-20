@@ -3,6 +3,9 @@ from .models import *
 
 class OrderSerializer(ModelSerializer):
     house_desc = SerializerMethodField()
+    house_address = SerializerMethodField()
+    def get_house_address(self, obj):
+        return obj.house.address
     def get_house_desc(self, obj):
         return obj.house.desc
     class Meta:
