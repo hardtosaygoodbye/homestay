@@ -84,7 +84,7 @@ param: {
             "check_out_date": "2018-9-11",
             "phone": "17600000000"，
             "token":"xxxxxxx"
-        }
+        }  
 return: {
     "code":0,
     "detail":"预定成功"
@@ -96,7 +96,7 @@ method: get
 param:{
     "status":0,
     "token":"xxxxxx"
-}
+}  
 return: {
     "code":0,
     "orders":[{}]
@@ -110,7 +110,7 @@ param: {
     "order_id":1,
     "msg":"这个房间很舒适",
     "score":5
-}
+}  
 return: {
     "code":0,
     "detail":"评价成功"
@@ -122,7 +122,7 @@ method: post
 param: {
     "token":"xxxxxx",
     "order_id":1
-}
+}  
 return: {
     "code":0,
     "detail":"订单取消成功"
@@ -134,7 +134,7 @@ method: post
 param: {
     "token":"xxxxxx",
     "order_id":1
-}
+}  
 return: {
     "code":0,
     "detail":"订单支付成功"
