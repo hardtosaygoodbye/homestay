@@ -83,6 +83,8 @@ class DiscussOrderView(APIView):
             house = house
         )
         comment.save()
+        comment_num = house.comment_num
+        comment_score = house.comment_score
         total_score = (comment_num * comment_score + score) / (comment_num + 1)
         house.comment_num += 1
         house.comment_score = total_score
