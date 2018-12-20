@@ -3,7 +3,7 @@ from .models import *
 
 class OrderSerializer(ModelSerializer):
     house_desc = SerializerMethodField()
-    def get_house_name(self, obj):
+    def get_house_desc(self, obj):
         return obj.house.desc
     class Meta:
         model = Order
