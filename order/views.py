@@ -73,7 +73,6 @@ class DiscussOrderView(APIView):
             order = Order.objects.get(pk = order_id)
         except:
             return Response({"detail":"该订单未找到"}, 400)
-        order.status = 3
         order.save()
         house = order.house
         comment = Comment(
